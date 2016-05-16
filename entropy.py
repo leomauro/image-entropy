@@ -11,8 +11,11 @@ def entropy(band):
     return -np.log2(hist / hist.sum()).sum()
 
 
-def show_entropy(name, e, sz):
-    print("{} entropy = {:.2f} bits, {:.6f} per pixel".format(name, e, e / sz))
+def show_entropy(band_name, band):
+    bits = entropy(band)
+    per_pixel = bits / band.size
+    print("{:3s} entropy = {:.2f} bits, {:.6f} per pixel"
+          .format(band_name, bits, per_pixel))
 
 
 def process(img_file):
@@ -27,17 +30,17 @@ def process(img_file):
     h, s, v = [np.asarray(component) for component in hsv.split()]
     l = np.asarray(grey)
 
-    show_entropy("R", entropy(r), r.size)
-    show_entropy("G", entropy(g), g.size)
-    show_entropy("B", entropy(b), b.size)
+    show_entropy("R", r)
+    show_entropy("G", g)
+    show_entropy("B", b)
     print()
 
-    show_entropy("H", entropy(h), h.size)
-    show_entropy("S", entropy(s), s.size)
-    show_entropy("V", entropy(v), v.size)
+    show_entropy("H", h)
+    show_entropy("S", s)
+    show_entropy("V", v)
     print()
 
-    show_entropy("L", entropy(l), l.size)
+    show_entropy("L", l)
     print()
 
 
