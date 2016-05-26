@@ -44,5 +44,6 @@ def process(img_file):
     print()
 
 
-process("images/left.png")
-process("images/right.png")
+if __name__ == "__main__":
+    process("images/left.png")
+    process("images/right.png")
