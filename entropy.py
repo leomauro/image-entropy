@@ -26,8 +26,7 @@ def show_entropy(band_name: str, band: np.ndarray) -> None:
     """
     bits = entropy(band)
     per_pixel = bits / band.size
-    print("{:3s} entropy = {:.2f} bits, {:.6f} per pixel"
-          .format(band_name, bits, per_pixel))
+    print(f"{band_name:3s} entropy = {bits:7.2f} bits, {per_pixel:7.6f} per pixel")
 
 
 def process(img_file: str) -> None:
